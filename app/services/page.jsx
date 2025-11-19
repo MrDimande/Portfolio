@@ -7,58 +7,27 @@ import GitHubStats from '@/components/GitHubStats'
 import AnalyticsDashboard from '@/components/AnalyticsDashboard'
 
 export default function ServicesPage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const { translations } = require('@/lib/translations')
 
-  const services = [
-    {
-      title: 'Planeamento Territorial',
-      description: 'Desenvolvimento de planos urbanísticos estratégicos, análise territorial mediante GIS, e coordenação de projetos de desenvolvimento urbano sustentável.',
-      icon: Map,
-      features: ['Planos Mestres Urbanos', 'Análise GIS', 'Coordenação de Projetos', 'Consultoria'],
-      borderColor: 'border-neon-cyan',
-      textColor: 'text-neon-cyan',
-    },
-    {
-      title: 'Análise GIS',
-      description: 'Análise de dados geoespaciais para tomada de decisões, visualização de dados territoriais e criação de mapas interativos.',
-      icon: Layers,
-      features: ['ArcGIS & QGIS', 'Análise Espacial', 'Cartografia', 'Visualização de Dados'],
-      borderColor: 'border-neon-magenta',
-      textColor: 'text-neon-magenta',
-    },
-    {
-      title: 'Desenvolvimento Web',
-      description: 'Criação de aplicações web modernas, dashboards interativos e plataformas para gestão de projetos urbanísticos.',
-      icon: Code,
-      features: ['React & Next.js', 'Dashboards Interativos', 'APIs REST', 'Aplicações GIS Web'],
-      borderColor: 'border-neon-blue',
-      textColor: 'text-neon-blue',
-    },
-    {
-      title: 'Visualização de Dados',
-      description: 'Transformação de dados complexos em visualizações intuitivas e dashboards analíticos para stakeholders.',
-      icon: BarChart3,
-      features: ['Data Visualization', 'Dashboards', 'Relatórios', 'Análise de Métricas'],
-      borderColor: 'border-neon-cyan',
-      textColor: 'text-neon-cyan',
-    },
-    {
-      title: 'Consultoria Técnica',
-      description: 'Aconselhamento especializado em planeamento territorial, tecnologias GIS e desenvolvimento de soluções web.',
-      icon: Target,
-      features: ['Consultoria GIS', 'Planeamento Estratégico', 'Tecnologia', 'Soluções Personalizadas'],
-      borderColor: 'border-neon-magenta',
-      textColor: 'text-neon-magenta',
-    },
-    {
-      title: 'Tradução & Localização',
-      description: 'Serviços de tradução profissional e localização de conteúdo para empresas internacionais.',
-      icon: Globe,
-      features: ['Tradução Técnica', 'Localização', 'Multilíngue', 'Mediação Cultural'],
-      borderColor: 'border-neon-blue',
-      textColor: 'text-neon-blue',
-    },
+  const serviceKeys = [
+    { key: 'territorialPlanning', icon: Map, borderColor: 'border-neon-cyan', textColor: 'text-neon-cyan' },
+    { key: 'gisAnalysis', icon: Layers, borderColor: 'border-neon-magenta', textColor: 'text-neon-magenta' },
+    { key: 'webDevelopment', icon: Code, borderColor: 'border-neon-blue', textColor: 'text-neon-blue' },
+    { key: 'dataVisualization', icon: BarChart3, borderColor: 'border-neon-cyan', textColor: 'text-neon-cyan' },
+    { key: 'technicalConsulting', icon: Target, borderColor: 'border-neon-magenta', textColor: 'text-neon-magenta' },
+    { key: 'translation', icon: Globe, borderColor: 'border-neon-blue', textColor: 'text-neon-blue' },
   ]
+
+  const services = serviceKeys.map((service) => {
+    const serviceData = translations[language]?.services?.items?.[service.key]
+    return {
+      ...service,
+      title: serviceData?.title || t(`services.items.${service.key}.title`),
+      description: serviceData?.description || t(`services.items.${service.key}.description`),
+      features: serviceData?.features || [],
+    }
+  })
 
   return (
     <div className="relative min-h-screen pt-24 sm:pt-32 pb-20">
@@ -71,14 +40,13 @@ export default function ServicesPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-orbitron font-bold mb-4">
-            <span className="text-neon-cyan">Serviços</span>{' '}
+            <span className="text-neon-cyan">{t('services.title')}</span>{' '}
             <span className="text-neon-magenta">&</span>{' '}
-            <span className="text-neon-blue">Soluções</span>
+            <span className="text-neon-blue">{t('services.subtitle')}</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-cyan to-neon-magenta mx-auto mb-4" />
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Soluções especializadas em planeamento territorial, GIS e desenvolvimento web
-            para transformar a visão urbana em realidade.
+            {t('services.description')}
           </p>
         </motion.div>
 

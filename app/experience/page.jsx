@@ -58,8 +58,8 @@ export default function ExperiencePage() {
           className="relative"
         >
           <h2 className="text-2xl font-bold text-center mb-12 font-orbitron">
-            <span className="text-neon-cyan">Timeline</span>{' '}
-            <span className="text-neon-magenta">Tradicional</span>
+            <span className="text-neon-cyan">{t('experience.traditionalTimeline')}</span>{' '}
+            <span className="text-neon-magenta">{t('experience.traditionalTimelineSubtitle')}</span>
           </h2>
 
           {/* Timeline Line */}

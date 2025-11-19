@@ -1,29 +1,31 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { LanguageProvider } from '@/contexts/LanguageContext'
-import LanguageWrapper from '@/components/LanguageWrapper'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import ParticlesBackground from '@/components/ParticlesBackground'
-import ChatBot from '@/components/ChatBot'
-import CustomCursor from '@/components/CustomCursor'
-import ScrollProgress from '@/components/ScrollProgress'
-import ScrollToTop from '@/components/ScrollToTop'
-import ScanLines from '@/components/ScanLines'
-import SoundEffectsProvider from '@/components/SoundEffectsProvider'
-
-const inter = Inter({ subsets: ['latin'] })
+import "./globals.css";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import LanguageWrapper from "@/components/LanguageWrapper";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ParticlesBackground from "@/components/ParticlesBackground";
+import ChatBot from "@/components/ChatBot";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScanLines from "@/components/ScanLines";
+import SoundEffectsProvider from "@/components/SoundEffectsProvider";
 
 export const metadata = {
-  title: 'Alberto Dimande | Planeador Territorial Futurista',
-  description: 'Portfolio de Alberto Dimande - Especialista em Planeamento Territorial, GIS e Desenvolvimento Web',
-  keywords: 'planeamento urbano, GIS, ArcGIS, QGIS, desenvolvimento web, Maputo, planeamento territorial',
-}
+  title: "Alberto Dimande | Planificador Territorial Futurista",
+  description:
+    "Portfolio de Alberto Dimande - Especialista em Planeamento Territorial, GIS e Desenvolvimento Web",
+  keywords:
+    "planeamento urbano, GIS, ArcGIS, QGIS, desenvolvimento web, Maputo, planeamento territorial",
+  icons: {
+    icon: "/ALD Logo.svg",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt" className="dark">
-      <body className={inter.className}>
+      <body className="font-sans">
         <LanguageProvider>
           <LanguageWrapper>
             <SoundEffectsProvider>
@@ -36,9 +38,7 @@ export default function RootLayout({ children }) {
                 <ScrollProgress />
                 <CustomCursor />
                 <Navbar />
-                <main className="relative z-10">
-                  {children}
-                </main>
+                <main className="relative z-10">{children}</main>
                 <Footer />
                 <ChatBot />
                 <ScrollToTop />
@@ -48,6 +48,5 @@ export default function RootLayout({ children }) {
         </LanguageProvider>
       </body>
     </html>
-  )
+  );
 }
-

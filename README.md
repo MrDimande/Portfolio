@@ -1,84 +1,141 @@
-# Portfolio de Alberto Dimande
+# 🚀 Portfolio de Alberto Dimande
 
-Portfolio web personal futurista y moderno para Alberto Dimande, Planificador Territorial Futurista de Maputo, Mozambique.
+Portfolio web futurista e moderno para **Alberto Dimande**, Planificador Territorial Futurista de Maputo, Moçambique. Uma experiência imersiva que combina design cyberpunk, animações 3D, interatividade avançada e funcionalidades inovadoras.
 
-## 🚀 Características
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
 
-- **Diseño Futurista**: Estilo cyberpunk con efectos neon (cyan, magenta, azul) y glassmorphism
-- **Animaciones Suaves**: Transiciones fluidas con Framer Motion
-- **Totalmente Responsive**: Optimizado para todos los dispositivos
-- **Performance Optimizado**: Next.js 14 con App Router
-- **SEO Ready**: Metadata optimizada para motores de búsqueda
-- **Accesible**: Cumple con estándares de accesibilidad web
+---
+
+## ✨ Características Principais
+
+### 🎨 Design & UX
+
+- **Design Futurista**: Estilo cyberpunk com efeitos neon (cyan, magenta, azul) e glassmorphism
+- **Animações Fluidas**: Transições suaves com Framer Motion e animações 3D com Three.js
+- **Totalmente Responsive**: Otimizado para todos os dispositivos (mobile, tablet, desktop)
+- **Cursor Personalizado**: Cursor customizado com efeitos interativos
+- **Efeitos Visuais**: Partículas animadas, scanlines, grid pattern e efeitos de parallax
+
+### 🌐 Funcionalidades Avançadas
+
+- **Sistema Multilíngue**: Suporte para múltiplos idiomas (Português, Inglês, Espanhol)
+- **ChatBot Interativo**: Assistente virtual integrado para interação com visitantes
+- **Player de Áudio**: Sistema de áudio ambiente para experiência imersiva
+- **Efeitos Sonoros**: Feedback sonoro em interações e navegação
+- **Mapas GIS**: Visualização de mapas interativos com Leaflet
+- **Timeline 3D**: Linha do tempo interativa em três dimensões
+- **Dashboard de Analytics**: Estatísticas e métricas de visualização
+
+### 🎯 Performance & SEO
+
+- **Performance Otimizado**: Next.js 14 com App Router e otimizações automáticas
+- **SEO Ready**: Metadata otimizada para motores de busca
+- **Acessibilidade**: Cumpre com padrões WCAG de acessibilidade web
+- **Loading Otimizado**: Tela de carregamento com animações suaves
+- **Scroll Progress**: Indicador visual de progresso de rolagem
+
+---
 
 ## 🛠️ Stack Tecnológico
 
-- **Framework**: Next.js 14 (React 18+)
-- **Estilos**: TailwindCSS
-- **Animaciones**: Framer Motion
-- **Iconos**: Lucide React
-- **Deployment**: Vercel (optimizado)
+### Core
 
-## 📦 Instalación
+- **Framework**: [Next.js 14](https://nextjs.org/) (React 18+)
+- **Linguagem**: TypeScript / JavaScript
+- **Estilos**: [TailwindCSS](https://tailwindcss.com/)
+- **Animações**: [Framer Motion](https://www.framer.com/motion/)
 
-1. **Clonar el repositorio** (o descargar los archivos)
+### Bibliotecas Especializadas
+
+- **3D Graphics**: [Three.js](https://threejs.org/) + [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) + [@react-three/drei](https://github.com/pmndrs/drei)
+- **Mapas**: [Leaflet](https://leafletjs.com/) + [React Leaflet](https://react-leaflet.js.org/)
+- **Partículas**: [TSParticles](https://particles.js.org/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/)
+- **Ícones**: [Lucide React](https://lucide.dev/)
+
+### Deployment
+
+- **Plataforma**: [Vercel](https://vercel.com/) (otimizado)
+- **CI/CD**: Integração automática com GitHub
+
+---
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm, yarn ou pnpm
+
+### Passos
+
+1. **Clonar o repositório**
 
 ```bash
 git clone <repository-url>
 cd portifolio
 ```
 
-2. **Instalar dependencias**
+2. **Instalar dependências**
 
 ```bash
 npm install
-# o
+# ou
 yarn install
-# o
+# ou
 pnpm install
 ```
 
-3. **Ejecutar en desarrollo**
+3. **Executar em desenvolvimento**
 
 ```bash
 npm run dev
-# o
+# ou
 yarn dev
-# o
+# ou
 pnpm dev
 ```
 
-4. **Abrir en el navegador**
+4. **Abrir no navegador**
 
-Navega a [http://localhost:3000](http://localhost:3000)
+```
+http://localhost:3000
+```
 
-## 🚢 Deployment en Vercel
+---
 
-### Opción 1: Deploy desde GitHub (Recomendado)
+## 🚢 Deployment
 
-1. **Sube tu código a GitHub**
-   - Crea un nuevo repositorio en GitHub
-   - Sube todos los archivos del proyecto
+### Opção 1: Deploy via GitHub (Recomendado)
 
-2. **Conecta con Vercel**
-   - Ve a [vercel.com](https://vercel.com)
-   - Inicia sesión con tu cuenta de GitHub
-   - Haz clic en "Add New Project"
-   - Importa tu repositorio de GitHub
-   - Vercel detectará automáticamente Next.js
-   - Haz clic en "Deploy"
+1. **Fazer push do código para GitHub**
 
-3. **¡Listo!** Tu sitio estará en línea en minutos
+   - Criar um novo repositório no GitHub
+   - Fazer push de todos os arquivos do projeto
 
-### Opción 2: Deploy desde CLI
+2. **Conectar com Vercel**
 
-1. **Instala Vercel CLI**
+   - Acessar [vercel.com](https://vercel.com)
+   - Fazer login com conta GitHub
+   - Clicar em "Add New Project"
+   - Importar o repositório do GitHub
+   - Vercel detectará automaticamente Next.js
+   - Clicar em "Deploy"
+
+3. **Pronto!** O site estará online em minutos
+
+### Opção 2: Deploy via CLI
+
+1. **Instalar Vercel CLI**
 
 ```bash
 npm i -g vercel
 ```
 
-2. **Inicia sesión**
+2. **Fazer login**
 
 ```bash
 vercel login
@@ -90,124 +147,281 @@ vercel login
 vercel
 ```
 
-4. **Deploy a producción**
+4. **Deploy para produção**
 
 ```bash
 vercel --prod
 ```
 
-## 📁 Estructura del Proyecto
+---
+
+## 📁 Estrutura do Projeto
 
 ```
 portifolio/
-├── app/
-│   ├── layout.jsx          # Layout principal
-│   ├── page.jsx            # Página de inicio (Hero)
+├── app/                          # App Router do Next.js 14
+│   ├── layout.jsx               # Layout principal com providers
+│   ├── page.jsx                 # Página inicial (Hero)
+│   ├── globals.css              # Estilos globais
+│   ├── not-found.jsx           # Página 404
 │   ├── about/
-│   │   └── page.jsx        # Página Sobre Mí
+│   │   └── page.jsx            # Página Sobre Mim
 │   ├── experience/
-│   │   └── page.jsx        # Página de Experiencia
+│   │   └── page.jsx            # Página de Experiência Profissional
 │   ├── projects/
-│   │   └── page.jsx        # Página de Proyectos
-│   ├── contact/
-│   │   └── page.jsx        # Página de Contacto
-│   └── globals.css         # Estilos globales
-├── components/
-│   ├── Navbar.jsx          # Barra de navegación
-│   ├── Footer.jsx          # Pie de página
-│   ├── AnimatedText.jsx    # Componente de texto animado
-│   ├── ExperienceCard.jsx  # Tarjeta de experiencia
-│   ├── ProjectCard.jsx     # Tarjeta de proyecto
-│   └── ContactForm.jsx    # Formulario de contacto
-├── lib/
-│   ├── data.js            # Datos del portfolio
-│   └── animations.js      # Utilidades de animación
-├── public/                # Archivos estáticos
-│   └── (añade tus imágenes aquí)
+│   │   └── page.jsx            # Página de Projetos
+│   ├── publications/
+│   │   └── page.jsx            # Página de Publicações
+│   ├── services/
+│   │   └── page.jsx            # Página de Serviços
+│   └── contact/
+│       └── page.jsx            # Página de Contato
+│
+├── components/                   # Componentes React
+│   ├── Navbar.jsx              # Barra de navegação
+│   ├── Footer.jsx              # Rodapé
+│   ├── AnimatedText.jsx        # Texto animado
+│   ├── AudioPlayer.jsx         # Player de áudio ambiente
+│   ├── ChatBot.jsx             # Chatbot interativo
+│   ├── CustomCursor.jsx        # Cursor personalizado
+│   ├── ParticlesBackground.jsx # Fundo de partículas
+│   ├── ScrollProgress.jsx      # Indicador de progresso
+│   ├── ScrollToTop.jsx         # Botão voltar ao topo
+│   ├── ScanLines.jsx           # Efeito scanlines
+│   ├── SoundEffectsProvider.jsx # Provider de efeitos sonoros
+│   ├── LanguageSelector.jsx    # Seletor de idioma
+│   ├── LanguageWrapper.jsx     # Wrapper de idioma
+│   ├── LoadingScreen.jsx       # Tela de carregamento
+│   ├── ExperienceCard.jsx     # Card de experiência
+│   ├── ProjectCard.jsx         # Card de projeto
+│   ├── PublicationCard.jsx    # Card de publicação
+│   ├── CompanyCard.jsx         # Card de empresa
+│   ├── ContactForm.jsx         # Formulário de contato
+│   ├── DownloadCV.jsx          # Download de CV
+│   ├── GISMapModal.jsx         # Modal de mapas GIS
+│   ├── InteractiveTimeline3D.jsx # Timeline 3D interativa
+│   ├── ThreeScene.jsx          # Cena 3D
+│   ├── ParallaxSection.jsx     # Seção parallax
+│   ├── RevealOnScroll.jsx      # Revelação ao scroll
+│   ├── GitHubStats.jsx         # Estatísticas do GitHub
+│   ├── AnalyticsDashboard.jsx  # Dashboard de analytics
+│   ├── CertificationsSection.jsx # Seção de certificações
+│   ├── EntrepreneurshipSection.jsx # Seção de empreendedorismo
+│   ├── HobbiesSection.jsx      # Seção de hobbies
+│   ├── TestimonialsSection.jsx # Seção de depoimentos
+│   └── CalendlyWidget.jsx      # Widget Calendly
+│
+├── contexts/                    # Contextos React
+│   └── LanguageContext.jsx     # Contexto de idioma
+│
+├── lib/                         # Utilitários e dados
+│   ├── data.js                 # Dados do portfolio
+│   ├── translations.js         # Traduções multilíngue
+│   ├── animations.js           # Utilitários de animação
+│   ├── soundEffects.js         # Efeitos sonoros
+│   └── utils.js                # Funções utilitárias
+│
+├── public/                      # Arquivos estáticos
+│   ├── ALD Logo.svg           # Logo principal
+│   └── README_AUDIO.md        # Documentação de áudio
+│
 ├── package.json
-├── tailwind.config.js
-├── next.config.js
-└── README.md
+├── tailwind.config.js          # Configuração Tailwind
+├── next.config.js              # Configuração Next.js
+├── tsconfig.json               # Configuração TypeScript
+├── postcss.config.js           # Configuração PostCSS
+├── vercel.json                 # Configuração Vercel
+└── README.md                   # Este arquivo
 ```
 
-## 🎨 Personalización
+---
 
-### Cambiar Colores
+## 🎨 Personalização
 
-Edita `tailwind.config.js` y `app/globals.css` para modificar los colores neon:
+### Alterar Cores
+
+Edite `tailwind.config.js` e `app/globals.css` para modificar os esquemas de cores:
 
 ```javascript
 // tailwind.config.js
 colors: {
   neon: {
-    cyan: '#00ffff',      // Cambia estos valores
-    magenta: '#ff00ff',
-    blue: '#0080ff',
+    cyan: '#00ffff',      // Ciano neon
+    magenta: '#ff00ff',   // Magenta neon
+    blue: '#0080ff',      // Azul neon
   }
 }
 ```
 
-### Actualizar Información Personal
+### Atualizar Informações Pessoais
 
-Edita `lib/data.js` para actualizar:
-- Experiencias profesionales
-- Proyectos
-- Habilidades
-- Información de contacto
+Edite `lib/data.js` para atualizar:
 
-### Añadir Imágenes
+- Experiências profissionais
+- Projetos realizados
+- Publicações
+- Habilidades técnicas
+- Informações de contato
+- Certificações
+- Depoimentos
 
-1. Coloca tus imágenes en la carpeta `public/`
-2. Actualiza las referencias en los componentes
+### Adicionar Traduções
 
-## 🔧 Scripts Disponibles
+Edite `lib/translations.js` para adicionar novos idiomas ou modificar traduções existentes.
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm run start` - Inicia el servidor de producción
-- `npm run lint` - Ejecuta el linter
+### Adicionar Imagens
 
-## 📝 Notas Importantes
+1. Coloque suas imagens na pasta `public/`
+2. Atualize as referências nos componentes
+3. Use formatos otimizados (WebP, AVIF) para melhor performance
 
-- **Formulario de Contacto**: Actualmente el formulario simula el envío. Para funcionalidad real, integra un servicio como:
-  - Formspree
-  - EmailJS
-  - API Route de Next.js con SendGrid/Resend
-  - Vercel Serverless Functions
+### Configurar ChatBot
 
-- **Imágenes**: Añade tus propias imágenes en la carpeta `public/`:
-  - `profile.jpg` - Foto de perfil
-  - `city-lights-bg.webp` - Imagen de fondo (opcional)
-  - `favicon.ico` - Favicon del sitio
+Edite `components/ChatBot.jsx` para personalizar:
 
-- **Enlaces**: Actualiza los enlaces de LinkedIn y email en:
-  - `components/Footer.jsx`
-  - `components/ContactForm.jsx`
-  - `lib/data.js`
+- Respostas do chatbot
+- Integração com APIs de IA
+- Comportamento e personalidade
 
-## 🌐 Variables de Entorno (Opcional)
+---
 
-Si necesitas variables de entorno (por ejemplo, para APIs), crea un archivo `.env.local`:
+## 🔧 Scripts Disponíveis
 
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-EMAIL_SERVICE_API_KEY=your_api_key
+```bash
+# Desenvolvimento
+npm run dev          # Inicia servidor de desenvolvimento
+
+# Produção
+npm run build        # Constrói aplicação para produção
+npm run start        # Inicia servidor de produção
+
+# Qualidade
+npm run lint         # Executa o linter ESLint
 ```
 
-## 📄 Licencia
+---
 
-Este proyecto es de uso personal. Siéntete libre de usarlo como base para tu propio portfolio.
+## 🌐 Variáveis de Ambiente
 
-## 🤝 Contribuciones
+Crie um arquivo `.env.local` na raiz do projeto para variáveis de ambiente:
 
-Este es un proyecto personal, pero las sugerencias y mejoras son bienvenidas.
+```env
+# APIs Externas (opcional)
+NEXT_PUBLIC_API_URL=your_api_url
+EMAIL_SERVICE_API_KEY=your_api_key
+CHATBOT_API_KEY=your_chatbot_key
 
-## 📧 Contacto
+# Analytics (opcional)
+NEXT_PUBLIC_GA_ID=your_google_analytics_id
+```
+
+---
+
+## 📝 Funcionalidades Detalhadas
+
+### Sistema Multilíngue
+
+- Suporte completo para múltiplos idiomas
+- Tradução dinâmica de todo o conteúdo
+- Persistência da preferência do usuário
+- Seletor de idioma na navbar
+
+### ChatBot Interativo
+
+- Respostas inteligentes a perguntas frequentes
+- Integração preparada para APIs de IA
+- Interface conversacional moderna
+- Histórico de conversas
+
+### Efeitos Visuais
+
+- **Partículas**: Fundo animado com TSParticles
+- **3D Graphics**: Cenas interativas com Three.js
+- **Glassmorphism**: Efeitos de vidro fosco
+- **Neon Effects**: Efeitos de brilho neon
+- **Parallax**: Efeitos de profundidade ao scroll
+
+### Mapas GIS
+
+- Visualização de mapas interativos
+- Integração com Leaflet
+- Modal para exibição de projetos GIS
+- Suporte para múltiplos tipos de mapas
+
+### Analytics
+
+- Dashboard de métricas
+- Estatísticas de visualização
+- Integração com Google Analytics (opcional)
+
+---
+
+## 🚀 Performance
+
+O projeto está otimizado para máxima performance:
+
+- **Code Splitting**: Divisão automática de código
+- **Image Optimization**: Otimização automática de imagens
+- **Font Optimization**: Carregamento otimizado de fontes
+- **Lazy Loading**: Carregamento sob demanda
+- **Static Generation**: Geração estática quando possível
+
+---
+
+## 🔒 Segurança
+
+- Validação de formulários no cliente e servidor
+- Proteção contra XSS
+- Sanitização de inputs
+- Headers de segurança configurados
+
+---
+
+## 📱 Compatibilidade
+
+- ✅ Chrome/Edge (últimas 2 versões)
+- ✅ Firefox (últimas 2 versões)
+- ✅ Safari (últimas 2 versões)
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
+
+---
+
+## 🤝 Contribuições
+
+Este é um projeto pessoal, mas sugestões e melhorias são bem-vindas! Sinta-se à vontade para:
+
+- Reportar bugs
+- Sugerir novas funcionalidades
+- Enviar pull requests
+
+---
+
+## 📄 Licença
+
+Este projeto é de uso pessoal. Sinta-se livre para usá-lo como base para seu próprio portfolio.
+
+---
+
+## 📧 Contato
 
 - **Email**: alberto.dimande@outlook.com
 - **LinkedIn**: [alberto-dimande](https://linkedin.com/in/alberto-dimande)
 
 ---
 
-Desarrollado con ❤️ usando Next.js y TailwindCSS
+## 🙏 Agradecimentos
 
+Desenvolvido com ❤️ usando:
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Three.js](https://threejs.org/)
+- E todas as outras bibliotecas incríveis da comunidade open source!
+
+---
+
+**Desenvolvido por Alberto Dimande** 🚀
+
+_Planificador Territorial Futurista | Especialista em GIS | Desenvolvedor Web_

@@ -37,15 +37,15 @@ export default function PublicationsPage() {
           <div className="flex items-center justify-center gap-4 mb-4">
             <BookOpen className="w-10 h-10 text-neon-cyan" />
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-orbitron font-bold">
-              <span className="text-neon-cyan">Publicações</span>{' '}
+              <span className="text-neon-cyan">{t('publications.title')}</span>{' '}
               <span className="text-neon-magenta">&</span>{' '}
-              <span className="text-neon-blue">Artigos</span>
+              <span className="text-neon-blue">{t('publications.subtitle')}</span>
             </h1>
             <GraduationCap className="w-10 h-10 text-neon-magenta" />
           </div>
           <div className="w-32 h-1 bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-blue mx-auto mb-4" />
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Artigos académicos, papers técnicos e posts sobre planeamento territorial, GIS e desenvolvimento urbano sustentável.
+            {t('publications.description')}
           </p>
         </motion.div>
 
@@ -63,7 +63,7 @@ export default function PublicationsPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Pesquisar publicações..."
+              placeholder={t('publications.searchPlaceholder')}
               className="w-full pl-12 pr-4 py-3 glass-strong border border-white/10 rounded-lg focus:border-neon-cyan focus:outline-none focus:ring-2 focus:ring-neon-cyan/20 text-white placeholder-gray-500 transition-all"
             />
           </div>
@@ -82,7 +82,7 @@ export default function PublicationsPage() {
                     : 'glass border border-white/10 text-gray-400 hover:border-neon-magenta hover:text-neon-magenta'
                 }`}
               >
-                {type === 'all' ? 'Todas' : type}
+                {type === 'all' ? t('publications.all') : type}
               </motion.button>
             ))}
           </div>
@@ -107,7 +107,7 @@ export default function PublicationsPage() {
             className="text-center py-20"
           >
             <FileText className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">Nenhuma publicação encontrada com os filtros selecionados.</p>
+            <p className="text-gray-400">{t('publications.noResults')}</p>
           </motion.div>
         )}
 
@@ -126,7 +126,7 @@ export default function PublicationsPage() {
             <div className="text-3xl font-bold text-neon-cyan mb-2 font-orbitron">
               {publications.length}
             </div>
-            <div className="text-sm text-gray-400">Publicações</div>
+            <div className="text-sm text-gray-400">{t('publications.statsPublications')}</div>
           </div>
 
           <div className="glass-strong rounded-xl p-6 border border-white/10 text-center">
@@ -136,7 +136,7 @@ export default function PublicationsPage() {
             <div className="text-3xl font-bold text-neon-magenta mb-2 font-orbitron">
               {new Set(publications.map((p) => p.journal)).size}
             </div>
-            <div className="text-sm text-gray-400">Revistas & Conferências</div>
+            <div className="text-sm text-gray-400">{t('publications.statsJournals')}</div>
           </div>
 
           <div className="glass-strong rounded-xl p-6 border border-white/10 text-center">
@@ -146,7 +146,7 @@ export default function PublicationsPage() {
             <div className="text-3xl font-bold text-neon-blue mb-2 font-orbitron">
               {new Set(publications.flatMap((p) => p.topics)).size}
             </div>
-            <div className="text-sm text-gray-400">Tópicos Abordados</div>
+            <div className="text-sm text-gray-400">{t('publications.statsTopics')}</div>
           </div>
         </motion.div>
       </div>

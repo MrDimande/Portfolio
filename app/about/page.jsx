@@ -6,6 +6,7 @@ import { skills } from '@/lib/data'
 import HobbiesSection from '@/components/HobbiesSection'
 import EntrepreneurshipSection from '@/components/EntrepreneurshipSection'
 import CertificationsSection from '@/components/CertificationsSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
 import DownloadCV from '@/components/DownloadCV'
 import RevealOnScroll from '@/components/RevealOnScroll'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -186,6 +187,9 @@ export default function AboutPage() {
 
         {/* Hobbies Section */}
         <HobbiesSection />
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
       </div>
     </div>
   )

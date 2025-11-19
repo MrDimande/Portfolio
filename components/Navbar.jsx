@@ -46,10 +46,13 @@ export default function Navbar() {
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="font-orbitron font-bold text-xl sm:text-2xl"
+              className="flex items-center"
             >
-              <span className="text-neon-cyan">A</span>
-              <span className="text-neon-magenta">D</span>
+              <img
+                src="/ALD Logo.svg"
+                alt="ALD Logo"
+                className="h-12 sm:h-16 w-auto"
+              />
             </motion.div>
           </Link>
 

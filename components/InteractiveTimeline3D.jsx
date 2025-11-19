@@ -67,7 +67,7 @@ export default function InteractiveTimeline3D() {
       container.removeEventListener('mousemove', handleMouseMove)
       if (animationFrame) cancelAnimationFrame(animationFrame)
     }
-  }, [is3DMode, experiences.length])
+  }, [is3DMode])
 
   return (
     <div className="relative">
