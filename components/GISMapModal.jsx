@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { X, MapPin } from 'lucide-react'
-import dynamic from 'next/dynamic'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { AnimatePresence, motion } from 'framer-motion'
+import { MapPin, X } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 
 // Dynamically import Leaflet to avoid SSR issues
 const MapContainer = dynamic(
@@ -24,8 +24,8 @@ const Popup = dynamic(
   { ssr: false }
 )
 
-// Import Leaflet CSS
-import 'leaflet/dist/leaflet.css'
+// Import Leaflet CSS - Commented out to prevent SSR issues
+// import 'leaflet/dist/leaflet.css'
 
 export default function GISMapModal({ isOpen, onClose, project, allProjects = [] }) {
   const { t } = useLanguage()

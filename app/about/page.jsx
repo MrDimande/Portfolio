@@ -1,20 +1,26 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { MapPin, Target, Lightbulb, Code2, Layers, Globe } from 'lucide-react'
-import { skills } from '@/lib/data'
-import HobbiesSection from '@/components/HobbiesSection'
-import EntrepreneurshipSection from '@/components/EntrepreneurshipSection'
+import Image from 'next/image'
+import { useState } from 'react'
+
 import CertificationsSection from '@/components/CertificationsSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
 import DownloadCV from '@/components/DownloadCV'
-import RevealOnScroll from '@/components/RevealOnScroll'
+import EducationSection from '@/components/EducationSection'
+import EntrepreneurshipSection from '@/components/EntrepreneurshipSection'
+import HobbiesSection from '@/components/HobbiesSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { skills } from '@/lib/data'
+import { motion } from 'framer-motion'
+import { Code2, Globe, Layers, Lightbulb, MapPin, Target } from 'lucide-react'
+
 
 export default function AboutPage() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState(false)
 
   const skillCategories = [
+    // ... existing categories
     {
       title: t('about.gisMapping'),
       icon: Layers,
@@ -76,10 +82,21 @@ export default function AboutPage() {
             className="lg:col-span-1"
           >
             <div className="glass-strong rounded-2xl p-8 border border-white/10 sticky top-24">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full glass border-2 border-neon-cyan flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-neon-cyan">AD</span>
-                </div>
+              <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-neon-cyan flex items-center justify-center overflow-hidden shadow-lg shadow-neon-cyan/50 relative">
+                {!imageError ? (
+                  <Image
+                    src="/profile.JPG"
+                    alt="Alberto Dimande"
+                    fill
+                    className="object-cover"
+                    onError={() => setImageError(true)}
+                    priority
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 flex items-center justify-center">
+                    <span className="text-4xl font-bold text-neon-cyan">AD</span>
+                  </div>
+                )}
               </div>
               <h2 className="text-2xl font-bold text-center mb-2 font-orbitron">
                 <span className="text-neon-cyan">Alberto</span>{' '}
@@ -178,6 +195,9 @@ export default function AboutPage() {
             })}
           </div>
         </motion.div>
+
+        {/* Education Section */}
+        <EducationSection />
 
         {/* Entrepreneurship Section */}
         <EntrepreneurshipSection />

@@ -1,6 +1,6 @@
 # 🚀 Portfolio de Alberto Dimande
 
-Portfolio web futurista e moderno para **Alberto Dimande**, Planificador Territorial Futurista de Maputo, Moçambique. Uma experiência imersiva que combina design cyberpunk, animações 3D, interatividade avançada e funcionalidades inovadoras.
+Portfolio web futurista e moderno para **Alberto Dimande**, Planificador Territorial de Maputo, Moçambique. Uma experiência imersiva que combina design cyberpunk, animações 3D, interatividade avançada e funcionalidades inovadoras.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)

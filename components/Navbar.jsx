@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
-import { Menu, X, Home, User, Briefcase, FolderKanban, Mail, Settings, BookOpen } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
-import LanguageSelector from '@/components/LanguageSelector'
 import AudioPlayer from '@/components/AudioPlayer'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { AnimatePresence, motion } from 'framer-motion'
+import { BookOpen, Briefcase, FolderKanban, Home, Mail, Menu, Settings, User, X } from 'lucide-react'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Navbar() {
   const { t } = useLanguage()
@@ -73,16 +72,14 @@ export default function Navbar() {
                 </motion.button>
               </Link>
             ))}
-            <div className="ml-4 flex items-center gap-2">
+            <div className="ml-4">
               <AudioPlayer />
-              <LanguageSelector />
             </div>
           </div>
 
-          {/* Mobile Menu Button & Language Selector */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <AudioPlayer />
-            <LanguageSelector />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg glass border border-white/10 hover:border-neon-cyan transition-colors"

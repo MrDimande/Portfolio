@@ -1,15 +1,15 @@
-import "./globals.css";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import LanguageWrapper from "@/components/LanguageWrapper";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ParticlesBackground from "@/components/ParticlesBackground";
 import ChatBot from "@/components/ChatBot";
 import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import LanguageWrapper from "@/components/LanguageWrapper";
+import Navbar from "@/components/Navbar";
+import ParticlesBackground from "@/components/ParticlesBackground";
+import ScanLines from "@/components/ScanLines";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
-import ScanLines from "@/components/ScanLines";
 import SoundEffectsProvider from "@/components/SoundEffectsProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import "./globals.css";
 
 export const metadata = {
   title: "Alberto Dimande | Planificador Territorial Futurista",

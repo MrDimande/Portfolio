@@ -1,38 +1,17 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect } from 'react'
-import { translations, defaultLanguage, supportedLanguages } from '@/lib/translations'
+import { translations } from '@/lib/translations'
+import { createContext, useContext } from 'react'
 
 const LanguageContext = createContext()
 
+// Idioma fixo: Português de Moçambique
+const FIXED_LANGUAGE = 'pt-MZ'
+
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(defaultLanguage)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    // Load language from localStorage or use default
-    // Only access localStorage on client side
-    if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('portfolio-language')
-      if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
-        setLanguage(savedLanguage)
-      }
-    }
-    setIsLoading(false)
-  }, [])
-
-  const changeLanguage = (newLanguage) => {
-    if (supportedLanguages.includes(newLanguage)) {
-      setLanguage(newLanguage)
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('portfolio-language', newLanguage)
-      }
-    }
-  }
-
   const t = (key) => {
     const keys = key.split('.')
-    let value = translations[language]
+    let value = translations[FIXED_LANGUAGE]
 
     for (const k of keys) {
       value = value?.[k]
@@ -42,7 +21,7 @@ export function LanguageProvider({ children }) {
   }
 
   return (
-    <LanguageContext.Provider value={{ language, changeLanguage, t, isLoading }}>
+    <LanguageContext.Provider value={{ language: FIXED_LANGUAGE, t, isLoading: false }}>
       {children}
     </LanguageContext.Provider>
   )
