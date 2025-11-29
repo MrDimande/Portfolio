@@ -1,24 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Download, FileText } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
+import { Download, FileText, ExternalLink } from 'lucide-react'
+
+const CV_URL = 'https://cv-alberto-dimande-2025.tiiny.site'
 
 export default function DownloadCV() {
-  const { t } = useLanguage()
-
-  const handleDownload = () => {
-    // Create a link to download CV
-    // Replace with actual CV file path
-    const link = document.createElement('a')
-    link.href = '/cv-alberto-dimande.pdf' // Add your CV file to public folder
-    link.download = 'CV-Alberto-Dimande.pdf'
-    link.click()
-  }
-
   return (
-    <motion.button
-      onClick={handleDownload}
+    <motion.a
+      href={CV_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
       className="flex items-center gap-3 px-6 py-3 glass-strong border border-neon-cyan rounded-lg text-neon-cyan font-semibold hover:glow-cyan transition-all group"
@@ -27,11 +19,11 @@ export default function DownloadCV() {
         <FileText className="w-5 h-5" />
       </div>
       <div className="text-left">
-        <div className="text-xs text-gray-400">Download</div>
+        <div className="text-xs text-gray-400">Ver / Download</div>
         <div className="text-sm font-bold">CV / Resume</div>
       </div>
-      <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-    </motion.button>
+      <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+    </motion.a>
   )
 }
 

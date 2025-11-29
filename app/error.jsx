@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default function Error({ error, reset }) {
   return (
     <div className="min-h-screen flex items-center justify-center">

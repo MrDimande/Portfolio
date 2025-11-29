@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Map, Code } from 'lucide-react'
-import Link from 'next/link'
-import GISMapModal from './GISMapModal'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { motion } from 'framer-motion'
+import { Code, ExternalLink, Github, Map } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
+import GISMapModal from './GISMapModal'
 
 export default function ProjectCard({ project, index, allProjects = [], viewMode = 'grid' }) {
   const { t } = useLanguage()

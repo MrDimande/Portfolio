@@ -1,15 +1,21 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowDown, MapPin, Code, Layers, Sparkles, TrendingUp, Zap, Briefcase, Clock, Award, Users, ArrowRight, Star } from 'lucide-react'
-import Link from 'next/link'
 import AnimatedText from '@/components/AnimatedText'
-import RevealOnScroll from '@/components/RevealOnScroll'
 import ParallaxSection from '@/components/ParallaxSection'
-import ThreeScene from '@/components/ThreeScene'
 import ProjectCard from '@/components/ProjectCard'
-import { projects, skills, experiences } from '@/lib/data'
+import RevealOnScroll from '@/components/RevealOnScroll'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { experiences, projects, skills } from '@/lib/data'
+import { motion } from 'framer-motion'
+import { ArrowRight, Award, Briefcase, Code, Layers, MapPin, Sparkles, Users, Zap } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+
+// Lazy load ThreeScene - reduz ~200KB do bundle inicial
+const ThreeScene = dynamic(() => import('@/components/ThreeScene'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-transparent" />
+})
 
 export default function Home() {
   const { t } = useLanguage()
@@ -79,100 +85,100 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center z-10">
+      <div className="relative min-h-screen flex items-center justify-center z-10 pb-24">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+          <div className="text-center">
+            {/* Main heading */}
+            <RevealOnScroll direction="fade">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold mb-6">
+                <span className="text-neon-cyan">ALBERTO</span>
+                <br />
+                <span className="text-neon-magenta">DIMANDE</span>
+              </h1>
+            </RevealOnScroll>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          {/* Main heading */}
-          <RevealOnScroll direction="fade">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-orbitron font-bold mb-4">
-              <span className="text-neon-cyan">ALBERTO</span>
-              <br />
-              <span className="text-neon-magenta">DIMANDE</span>
-            </h1>
-          </RevealOnScroll>
+            {/* Animated title */}
+            <RevealOnScroll direction="up" delay={0.2} className="mb-6">
+              <AnimatedText
+                text={t('hero.subtitle')}
+                className="text-xl sm:text-2xl md:text-3xl font-orbitron font-medium text-white mb-2"
+              />
+              <p className="text-base sm:text-lg text-gray-300 mt-3">
+                📍 {t('hero.location')}
+              </p>
+            </RevealOnScroll>
 
-          {/* Animated title */}
-          <RevealOnScroll direction="up" delay={0.2} className="mb-8">
-            <AnimatedText
-              text={t('hero.subtitle')}
-              className="text-2xl sm:text-3xl md:text-4xl font-orbitron font-medium text-white mb-2"
-            />
-            <p className="text-lg sm:text-xl text-gray-300 mt-4">
-              {t('hero.location')}
-            </p>
-          </RevealOnScroll>
-
-          {/* Skills icons */}
-          <ParallaxSection speed={0.3} className="flex justify-center gap-8 sm:gap-12 mb-12 flex-wrap">
-            <motion.div
-              whileHover={{ scale: 1.2, y: -10 }}
-              className="flex flex-col items-center group"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass border-neon-cyan flex items-center justify-center mb-2 group-hover:glow-cyan transition-all">
-                <Layers className="w-8 h-8 sm:w-10 sm:h-10 text-neon-cyan" />
-              </div>
-              <span className="text-sm text-gray-400">{t('hero.gis')}</span>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2, y: -10 }}
-              className="flex flex-col items-center group"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass border-neon-magenta flex items-center justify-center mb-2 group-hover:glow-magenta transition-all">
-                <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-neon-magenta" />
-              </div>
-              <span className="text-sm text-gray-400">{t('hero.urbanism')}</span>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2, y: -10 }}
-              className="flex flex-col items-center group"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full glass border-neon-blue flex items-center justify-center mb-2 group-hover:glow-blue transition-all">
-                <Code className="w-8 h-8 sm:w-10 sm:h-10 text-neon-blue" />
-              </div>
-              <span className="text-sm text-gray-400">{t('hero.webDev')}</span>
-            </motion.div>
-          </ParallaxSection>
-
-          {/* CTA Buttons */}
-          <RevealOnScroll direction="up" delay={0.6} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/about">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 glass-strong border-neon-cyan rounded-lg text-neon-cyan font-semibold hover:glow-cyan transition-all"
+            {/* Skills icons */}
+            <ParallaxSection speed={0.3} className="flex justify-center gap-6 sm:gap-10 mb-10 flex-wrap">
+              <motion.div
+                whileHover={{ scale: 1.15, y: -8 }}
+                className="flex flex-col items-center group"
               >
-                {t('hero.knowMore')}
-              </motion.button>
-            </Link>
-            <Link href="/projects">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 glass-strong border-neon-magenta rounded-lg text-neon-magenta font-semibold hover:glow-magenta transition-all"
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass border border-neon-cyan flex items-center justify-center mb-2 group-hover:glow-cyan transition-all">
+                  <Layers className="w-7 h-7 sm:w-8 sm:h-8 text-neon-cyan" />
+                </div>
+                <span className="text-xs sm:text-sm text-gray-400">{t('hero.gis')}</span>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.15, y: -8 }}
+                className="flex flex-col items-center group"
               >
-                {t('hero.viewProjects')}
-              </motion.button>
-            </Link>
-          </RevealOnScroll>
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass border border-neon-magenta flex items-center justify-center mb-2 group-hover:glow-magenta transition-all">
+                  <MapPin className="w-7 h-7 sm:w-8 sm:h-8 text-neon-magenta" />
+                </div>
+                <span className="text-xs sm:text-sm text-gray-400">{t('hero.urbanism')}</span>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.15, y: -8 }}
+                className="flex flex-col items-center group"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full glass border border-neon-blue flex items-center justify-center mb-2 group-hover:glow-blue transition-all">
+                  <Code className="w-7 h-7 sm:w-8 sm:h-8 text-neon-blue" />
+                </div>
+                <span className="text-xs sm:text-sm text-gray-400">{t('hero.webDev')}</span>
+              </motion.div>
+            </ParallaxSection>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <ArrowDown className="w-6 h-6 text-neon-cyan mx-auto" />
-            </motion.div>
-          </motion.div>
+            {/* CTA Buttons */}
+            <RevealOnScroll direction="up" delay={0.6} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <Link href="/about">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 sm:px-8 sm:py-4 glass-strong border border-neon-cyan rounded-lg text-neon-cyan font-semibold hover:glow-cyan transition-all text-sm sm:text-base"
+                >
+                  {t('hero.knowMore')}
+                </motion.button>
+              </Link>
+              <Link href="/projects">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 sm:px-8 sm:py-4 glass-strong border border-neon-magenta rounded-lg text-neon-magenta font-semibold hover:glow-magenta transition-all text-sm sm:text-base"
+                >
+                  {t('hero.viewProjects')}
+                </motion.button>
+              </Link>
+            </RevealOnScroll>
+          </div>
         </div>
+
+        {/* Scroll indicator - Mouse animado (posição fixa no fundo) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1"
+        >
+          <div className="w-5 h-8 rounded-full border-2 border-neon-cyan/60 flex justify-center pt-1.5">
+            <motion.div
+              className="w-1 h-2 bg-neon-cyan rounded-full"
+              animate={{ y: [0, 10, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
       </div>
-    </div>
 
       {/* Featured Projects Section */}
       <section className="relative py-20 sm:py-32 z-10">

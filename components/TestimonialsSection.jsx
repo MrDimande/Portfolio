@@ -10,6 +10,11 @@ export default function TestimonialsSection() {
   const { t } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  // Não renderiza se não houver testimonials
+  if (!testimonials || testimonials.length === 0) {
+    return null
+  }
+
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
   }

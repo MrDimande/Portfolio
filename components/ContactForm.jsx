@@ -94,9 +94,30 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // Simulate form submission (replace with actual API call)
-      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // Envia email usando EmailJS
+      // Configura as tuas credenciais em https://www.emailjs.com/
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (serviceId && templateId && publicKey) {
+        const emailjs = (await import('@emailjs/browser')).default
+        await emailjs.send(serviceId, templateId, {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || 'Não fornecido',
+          company: formData.company || 'Não fornecido',
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Alberto Dimande',
+        }, publicKey)
+      } else {
+        // Fallback: abre o cliente de email
+        const mailtoLink = `mailto:alberto.dimande@outlook.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+          `Nome: ${formData.name}\nEmail: ${formData.email}\nTelefone: ${formData.phone || 'N/A'}\nEmpresa: ${formData.company || 'N/A'}\n\nMensagem:\n${formData.message}`
+        )}`
+        window.open(mailtoLink, '_blank')
+      }
 
       setIsSubmitting(false)
       setIsSubmitted(true)
