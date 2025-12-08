@@ -8,11 +8,11 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { experiences, projects, skills } from '@/lib/data'
 import { motion } from 'framer-motion'
 import { ArrowRight, Award, Briefcase, Code, Layers, MapPin, Sparkles, Users, Zap } from 'lucide-react'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import Link from 'next/link'
 
 // Lazy load ThreeScene - reduz ~200KB do bundle inicial
-const ThreeScene = dynamic(() => import('@/components/ThreeScene'), {
+const ThreeScene = nextDynamic(() => import('@/components/ThreeScene'), {
   ssr: false,
   loading: () => <div className="w-full h-full bg-transparent" />
 })

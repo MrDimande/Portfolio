@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FolderKanban, Filter, Grid3x3, List } from 'lucide-react'
 import ProjectCard from '@/components/ProjectCard'
-import { projects } from '@/lib/data'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { projects } from '@/lib/data'
+import { motion } from 'framer-motion'
+import { FolderKanban, Grid3x3, List } from 'lucide-react'
+import { useState } from 'react'
 
 export default function ProjectsPage() {
   const { t } = useLanguage()

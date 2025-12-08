@@ -1,12 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Home, ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Home } from 'lucide-react'
 import Link from 'next/link'
-import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function NotFound() {
-  const { t } = useLanguage()
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">

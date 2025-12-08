@@ -1,6 +1,3 @@
-const withPWA = require('@ducanh2912/next-pwa').default;
-const isDev = process.env.NODE_ENV === 'development';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -12,6 +9,7 @@ const nextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -19,15 +17,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-  output: 'standalone',
 };
 
-module.exports = withPWA({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: isDev,
-})(nextConfig);
+module.exports = nextConfig;

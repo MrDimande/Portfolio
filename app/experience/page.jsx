@@ -1,11 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Briefcase, Clock } from 'lucide-react'
 import ExperienceCard from '@/components/ExperienceCard'
 import InteractiveTimeline3D from '@/components/InteractiveTimeline3D'
-import { experiences } from '@/lib/data'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { experiences } from '@/lib/data'
+import { motion } from 'framer-motion'
+import { Briefcase, Clock } from 'lucide-react'
 
 export default function ExperiencePage() {
   const { t, isLoading } = useLanguage()

@@ -1,10 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Map, Code, Layers, BarChart3, Globe, Zap, Target, Users } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
-import GitHubStats from '@/components/GitHubStats'
 import AnalyticsDashboard from '@/components/AnalyticsDashboard'
+import GitHubStats from '@/components/GitHubStats'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { motion } from 'framer-motion'
+import { BarChart3, Code, Globe, Layers, Map, Target } from 'lucide-react'
 
 export default function ServicesPage() {
   const { t, language } = useLanguage()

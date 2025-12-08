@@ -1,10 +1,10 @@
 'use client'
 
+import CalendlyWidget from '@/components/CalendlyWidget'
+import ContactForm from '@/components/ContactForm'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
 import { Mail, MessageSquare } from 'lucide-react'
-import ContactForm from '@/components/ContactForm'
-import CalendlyWidget from '@/components/CalendlyWidget'
-import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ContactPage() {
   const { t } = useLanguage()

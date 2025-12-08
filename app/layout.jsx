@@ -1,13 +1,11 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
-import LanguageWrapper from "@/components/LanguageWrapper";
 import Navbar from "@/components/Navbar";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import Providers from "@/components/Providers";
 import ScanLines from "@/components/ScanLines";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
-import SoundEffectsProvider from "@/components/SoundEffectsProvider";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Analytics } from "@vercel/analytics/react";
 import nextDynamic from "next/dynamic";
 import "./globals.css";
@@ -95,27 +93,23 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/ALD Logo.svg" />
       </head>
       <body className="font-sans">
-        <LanguageProvider>
-          <LanguageWrapper>
-            <SoundEffectsProvider>
-              <div className="relative min-h-screen">
-                <div className="grid-pattern fixed inset-0 pointer-events-none z-0" />
-                <div className="fixed inset-0 pointer-events-none z-0">
-                  <ParticlesBackground />
-                </div>
-                <ScanLines />
-                <ScrollProgress />
-                <CustomCursor />
-                <Navbar />
-                <Breadcrumbs />
-                <main className="relative z-10">{children}</main>
-                <Footer />
-                <ChatBot />
-                <ScrollToTop />
-              </div>
-            </SoundEffectsProvider>
-          </LanguageWrapper>
-        </LanguageProvider>
+        <Providers>
+          <div className="relative min-h-screen">
+            <div className="grid-pattern fixed inset-0 pointer-events-none z-0" />
+            <div className="fixed inset-0 pointer-events-none z-0">
+              <ParticlesBackground />
+            </div>
+            <ScanLines />
+            <ScrollProgress />
+            <CustomCursor />
+            <Navbar />
+            <Breadcrumbs />
+            <main className="relative z-10">{children}</main>
+            <Footer />
+            <ChatBot />
+            <ScrollToTop />
+          </div>
+        </Providers>
         <Analytics />
       </body>
     </html>

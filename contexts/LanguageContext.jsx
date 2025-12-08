@@ -3,25 +3,31 @@
 import { translations } from '@/lib/translations'
 import { createContext, useContext } from 'react'
 
-const LanguageContext = createContext()
-
 // Idioma fixo: Português de Moçambique
 const FIXED_LANGUAGE = 'pt-MZ'
 
-export function LanguageProvider({ children }) {
-  const t = (key) => {
-    const keys = key.split('.')
-    let value = translations[FIXED_LANGUAGE]
-
-    for (const k of keys) {
-      value = value?.[k]
-    }
-
-    return value || key
+// Função t padrão para SSR
+const defaultT = (key) => {
+  const keys = key.split('.')
+  let value = translations[FIXED_LANGUAGE]
+  for (const k of keys) {
+    value = value?.[k]
   }
+  return value || key
+}
 
+// Valor padrão do contexto para evitar erros durante SSR
+const defaultContextValue = {
+  language: FIXED_LANGUAGE,
+  t: defaultT,
+  isLoading: false
+}
+
+const LanguageContext = createContext(defaultContextValue)
+
+export function LanguageProvider({ children }) {
   return (
-    <LanguageContext.Provider value={{ language: FIXED_LANGUAGE, t, isLoading: false }}>
+    <LanguageContext.Provider value={defaultContextValue}>
       {children}
     </LanguageContext.Provider>
   )
@@ -29,9 +35,6 @@ export function LanguageProvider({ children }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext)
-  if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider')
-  }
-  return context
+  return context || defaultContextValue
 }
 
