@@ -2,7 +2,7 @@
 
 import { getSoundEffects } from '@/lib/soundEffects'
 import { motion } from 'framer-motion'
-import { Calendar, Download, ExternalLink, FileText, Tag, Users } from 'lucide-react'
+import { Calendar, Download, ExternalLink, Eye, FileText, Tag, Users } from 'lucide-react'
 import Link from 'next/link'
 
 export default function PublicationCard({ publication, index }) {
