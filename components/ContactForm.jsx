@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Mail, Linkedin, CheckCircle, Github, MessageCircle, Instagram, AlertCircle, Copy, Phone, Building2, FileText, Sparkles } from 'lucide-react'
-import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { AnimatePresence, motion } from 'framer-motion'
+import { AlertCircle, Building2, CheckCircle, Copy, FileText, Github, Instagram, Linkedin, Mail, MessageCircle, Phone, Send } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function ContactForm() {
   const { t } = useLanguage()
@@ -549,7 +549,7 @@ export default function ContactForm() {
               <>
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 {t('contact.sendMessage')}
-                <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-neon-magenta opacity-0 group-hover:opacity-100 transition-opacity" />
+
               </>
             )}
           </motion.button>

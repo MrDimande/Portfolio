@@ -22,8 +22,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        orbitron: ['Orbitron', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
+        sans: ['var(--font-poppins)', 'sans-serif'],
       },
       animation: {
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',

@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { FileText, ExternalLink, Download, Calendar, Users, Tag } from 'lucide-react'
-import Link from 'next/link'
 import { getSoundEffects } from '@/lib/soundEffects'
+import { motion } from 'framer-motion'
+import { Calendar, Download, ExternalLink, FileText, Tag, Users } from 'lucide-react'
+import Link from 'next/link'
 
 export default function PublicationCard({ publication, index }) {
   const handleClick = () => {
@@ -113,6 +113,21 @@ export default function PublicationCard({ publication, index }) {
 
         {/* Actions */}
         <div className="flex gap-3 pt-4 border-t border-white/10">
+          {/* Read Article Button - Primary Action */}
+          <Link
+            href={`/publications/${publication.slug}`}
+            onClick={handleClick}
+            className="flex-1"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg glass border border-neon-cyan text-neon-cyan text-sm font-medium hover:glow-cyan transition-all"
+            >
+              <Eye className="w-4 h-4" />
+              Ler Artigo
+            </motion.button>
+          </Link>
           {publication.link && (
             <Link
               href={publication.link}
@@ -123,10 +138,9 @@ export default function PublicationCard({ publication, index }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg glass border border-neon-cyan text-neon-cyan text-sm font-medium hover:glow-cyan transition-all"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg glass border border-white/10 text-gray-300 text-sm font-medium hover:border-neon-magenta hover:text-neon-magenta transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
-                Ver Artigo
               </motion.button>
             </Link>
           )}
@@ -140,10 +154,9 @@ export default function PublicationCard({ publication, index }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg glass border border-white/10 text-gray-300 text-sm font-medium hover:border-neon-magenta hover:text-neon-magenta transition-all"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg glass border border-white/10 text-gray-300 text-sm font-medium hover:border-neon-magenta hover:text-neon-magenta transition-all"
               >
                 <Download className="w-4 h-4" />
-                PDF
               </motion.button>
             </Link>
           )}

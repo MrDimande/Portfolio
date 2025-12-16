@@ -4,24 +4,29 @@ import PublicationCard from '@/components/PublicationCard'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { publications } from '@/lib/data'
 import { motion } from 'framer-motion'
-import { BookOpen, FileText, Globe, GraduationCap, Search } from 'lucide-react'
+import { BookOpen, Calendar, FileText, Globe, GraduationCap, Search } from 'lucide-react'
 import { useState } from 'react'
 
 export default function PublicationsPage() {
   const { t } = useLanguage()
   const [selectedType, setSelectedType] = useState('all')
+  const [selectedYear, setSelectedYear] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const types = ['all', 'Artigo Académico', 'Paper Técnico', 'Artigo de Pesquisa', 'Post / Artigo de Opinião', 'Tutorial / Guia Técnico']
+  const types = ['all', 'Monografia / Tese de Licenciatura', 'Artigo Académico', 'Paper Técnico', 'Artigo de Pesquisa', 'Post / Artigo de Opinião', 'Tutorial / Guia Técnico']
+  
+  // Extract unique years from publications and sort descending
+  const years = ['all', ...Array.from(new Set(publications.map((p) => p.year))).sort((a, b) => b - a)]
 
   const filteredPublications = publications.filter((pub) => {
     const matchesType = selectedType === 'all' || pub.type === selectedType
+    const matchesYear = selectedYear === 'all' || pub.year === selectedYear
     const matchesSearch =
       searchQuery === '' ||
       pub.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pub.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pub.topics.some((topic) => topic.toLowerCase().includes(searchQuery.toLowerCase()))
-    return matchesType && matchesSearch
+    return matchesType && matchesYear && matchesSearch
   })
 
   return (
@@ -68,7 +73,30 @@ export default function PublicationsPage() {
             />
           </div>
 
-          {/* Filter Buttons */}
+          {/* Year Filter */}
+          <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex items-center gap-2 mr-2">
+              <Calendar className="w-4 h-4 text-neon-magenta" />
+              <span className="text-sm text-gray-400">Ano:</span>
+            </div>
+            {years.map((year) => (
+              <motion.button
+                key={year}
+                onClick={() => setSelectedYear(year)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-3 py-1 rounded-full font-medium text-xs transition-all ${
+                  selectedYear === year
+                    ? 'glass-strong border border-neon-magenta text-neon-magenta'
+                    : 'glass border border-white/10 text-gray-500 hover:border-neon-magenta/50 hover:text-gray-300'
+                }`}
+              >
+                {year === 'all' ? 'Todos' : year}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Type Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3">
             {types.map((type) => (
               <motion.button
@@ -86,6 +114,43 @@ export default function PublicationsPage() {
               </motion.button>
             ))}
           </div>
+
+          {/* Active Filters Display */}
+          {(selectedType !== 'all' || selectedYear !== 'all' || searchQuery) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-wrap justify-center gap-2 items-center"
+            >
+              <span className="text-xs text-gray-500">Filtros ativos:</span>
+              {selectedType !== 'all' && (
+                <span className="px-2 py-1 rounded-full text-xs bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">
+                  {selectedType}
+                </span>
+              )}
+              {selectedYear !== 'all' && (
+                <span className="px-2 py-1 rounded-full text-xs bg-neon-magenta/10 text-neon-magenta border border-neon-magenta/30">
+                  {selectedYear}
+                </span>
+              )}
+              {searchQuery && (
+                <span className="px-2 py-1 rounded-full text-xs bg-neon-blue/10 text-neon-blue border border-neon-blue/30">
+                  "{searchQuery}"
+                </span>
+              )}
+              <motion.button
+                onClick={() => {
+                  setSelectedType('all')
+                  setSelectedYear('all')
+                  setSearchQuery('')
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="text-xs text-gray-500 hover:text-white underline"
+              >
+                Limpar filtros
+              </motion.button>
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Publications Grid */}

@@ -1,31 +1,36 @@
 # 🎵 Ambient Sound Setup
 
-## Como Adicionar Seu Arquivo de Áudio
+## Música de Fundo
 
-1. **Coloque seu arquivo de áudio** na pasta `public/` com o nome:
-   - `ambient-sound.mp3` (recomendado)
-   - Ou `ambient-sound.ogg` / `ambient-sound.wav`
+A música ambiente utilizada neste portfolio é:
 
-2. **O componente AudioPlayer** irá:
-   - Tentar carregar o arquivo de áudio primeiro
-   - Se o arquivo não existir, usará som sintético gerado automaticamente
-   - O som sintético é calmo e futurista (pad synth)
+- **Artista**: Lunar Years
+- **Fonte**: [Bensound.com](https://www.bensound.com)
+- **Código de Licença**: `NTNXO8VUTBWJVYNH`
 
-## Recomendações de Áudio
+## Como Adicionar o Arquivo de Áudio
 
-- **Formato**: MP3, OGG ou WAV
-- **Duração**: Loop infinito (o componente já configura loop)
-- **Estilo**: Calmo, futurista, minimalista
-- **Volume**: O componente ajusta automaticamente para 30%
+1. **Faça o download** da música "Lunar Years" no Bensound.com
+2. **Renomeie o arquivo** para: `ambient-sound.mp3`
+3. **Coloque o arquivo** na pasta `public/`
 
-## Exemplos de Sons Ideais
+## Formatos Suportados
 
-- Synth pads ambientais
-- Ruído de cidade futurista
-- Atmosfera espacial/cyberpunk
-- Som ambiente de laboratório/tecnologia
+- `ambient-sound.mp3` (recomendado)
+- `ambient-sound.ogg`
+- `ambient-sound.wav`
 
-## Nota
+## Comportamento do Player
 
-Se você não adicionar um arquivo de áudio, o sistema usará automaticamente um som sintético gerado com Web Audio API, que cria um ambiente calmo e futurista.
+- O **AudioPlayer** irá carregar o arquivo de áudio automaticamente
+- Se o arquivo não existir, usará som sintético gerado automaticamente
+- Volume padrão: 30%
+- Botão de controle aparece no canto inferior esquerdo
 
+## Atribuição
+
+```
+Music by Bensound.com
+License code: NTNXO8VUTBWJVYNH
+Artist: Lunar Years
+```

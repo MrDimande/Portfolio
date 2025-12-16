@@ -1,6 +1,8 @@
 'use client'
 
 import AudioPlayer from '@/components/AudioPlayer'
+import FestiveLogoEffect from '@/components/FestiveLogoEffect'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Briefcase, FolderKanban, Home, Mail, Menu, Settings, User, X } from 'lucide-react'
@@ -56,14 +58,16 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center relative h-10 sm:h-12 w-auto"
             >
-              <Image
-                src="/ALD Logo.svg"
-                alt="ALD Logo"
-                width={48}
-                height={48}
-                className="h-10 sm:h-12 w-auto"
-                priority
-              />
+              <FestiveLogoEffect>
+                <Image
+                  src="/ALD Logo.svg"
+                  alt="ALD Logo"
+                  width={48}
+                  height={48}
+                  className="h-10 sm:h-12 w-auto"
+                  priority
+                />
+              </FestiveLogoEffect>
             </motion.div>
           </Link>
 
@@ -134,13 +138,15 @@ export default function Navbar() {
               </motion.button>
             </Link>
             
-            <div className="ml-3 pl-3 border-l border-white/10">
+            <div className="ml-3 pl-3 border-l border-white/10 flex items-center gap-3">
+              <LanguageSwitcher />
               <AudioPlayer />
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
+            <LanguageSwitcher />
             <AudioPlayer />
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

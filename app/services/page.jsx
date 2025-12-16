@@ -1,7 +1,9 @@
 'use client'
 
 import AnalyticsDashboard from '@/components/AnalyticsDashboard'
+import FacebookStats from '@/components/FacebookStats'
 import GitHubStats from '@/components/GitHubStats'
+import InstagramStats from '@/components/InstagramStats'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
 import { BarChart3, Code, Globe, Layers, Map, Target } from 'lucide-react'
@@ -86,15 +88,17 @@ export default function ServicesPage() {
           })}
         </div>
 
-        {/* GitHub Stats Section */}
+        {/* Social Media Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-md mx-auto mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
         >
           <GitHubStats username="MrDimande" />
+          <FacebookStats username="alberto.dimande" />
+          <InstagramStats username="mr.dimande" />
         </motion.div>
 
         {/* Analytics Dashboard */}

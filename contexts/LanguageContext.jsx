@@ -1,33 +1,68 @@
 'use client'
 
 import { translations } from '@/lib/translations'
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
-// Idioma fixo: Português de Moçambique
-const FIXED_LANGUAGE = 'pt-MZ'
+const LanguageContext = createContext()
 
-// Função t padrão para SSR
-const defaultT = (key) => {
-  const keys = key.split('.')
-  let value = translations[FIXED_LANGUAGE]
-  for (const k of keys) {
-    value = value?.[k]
-  }
-  return value || key
-}
-
-// Valor padrão do contexto para evitar erros durante SSR
-const defaultContextValue = {
-  language: FIXED_LANGUAGE,
-  t: defaultT,
-  isLoading: false
-}
-
-const LanguageContext = createContext(defaultContextValue)
+const AVAILABLE_LANGUAGES = [
+  { code: 'pt-MZ', label: 'PT', name: 'Português (MZ)', flag: '🇲🇿' },
+  { code: 'en-GB', label: 'EN', name: 'English (UK)', flag: '🇬🇧' },
+]
 
 export function LanguageProvider({ children }) {
+  const [language, setLanguage] = useState('pt-MZ')
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Load language from local storage if available
+    const savedLanguage = localStorage.getItem('language')
+    if (savedLanguage && translations[savedLanguage]) {
+      setLanguage(savedLanguage)
+    }
+    setIsLoading(false)
+  }, [])
+
+  const changeLanguage = (langCode) => {
+    if (translations[langCode]) {
+      setLanguage(langCode)
+      localStorage.setItem('language', langCode)
+    }
+  }
+
+  // Translation function
+  const t = (key) => {
+    const keys = key.split('.')
+    let value = translations[language]
+    
+    for (const k of keys) {
+      if (value === undefined) break
+      value = value[k]
+    }
+    
+    // Fallback to pt-MZ if missing
+    if (!value) {
+      let fallback = translations['pt-MZ']
+      for (const k of keys) {
+        if (fallback === undefined) break
+        fallback = fallback[k]
+      }
+      return fallback || key
+    }
+
+    return value
+  }
+
+  const value = {
+    language,
+    changeLanguage,
+    t,
+    isLoading,
+    availableLanguages: AVAILABLE_LANGUAGES
+  }
+
   return (
-    <LanguageContext.Provider value={defaultContextValue}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )
@@ -35,6 +70,8 @@ export function LanguageProvider({ children }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext)
-  return context || defaultContextValue
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider')
+  }
+  return context
 }
-

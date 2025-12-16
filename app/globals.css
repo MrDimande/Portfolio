@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -26,7 +26,7 @@ html {
 body {
   background-color: var(--dark-bg);
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   overflow-x: hidden;
   position: relative;
   cursor: none; /* Hide default cursor when custom cursor is active */
@@ -55,15 +55,15 @@ body::before {
 
 .glass {
   background: rgba(26, 26, 36, 0.7);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-strong {
   background: rgba(17, 17, 24, 0.9);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
@@ -185,6 +185,7 @@ body::before {
   background-color: rgba(17, 17, 24, 0.9) !important;
   color: #00ffff !important;
   border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -195,6 +196,7 @@ body::before {
 
 .dark-map .leaflet-popup-content-wrapper {
   background: rgba(17, 17, 24, 0.95) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(0, 255, 255, 0.3) !important;
   border-radius: 8px !important;

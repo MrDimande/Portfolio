@@ -1,48 +1,98 @@
 export default function sitemap() {
-  const baseUrl = "https://albertodimande.vercel.app";
+  const baseUrl = "https://dimande.vercel.app";
+  const now = new Date();
 
   const routes = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1.0,
+      alternates: {
+        languages: {
+          'pt-MZ': baseUrl,
+          'en': `${baseUrl}?lang=en`,
+          'es': `${baseUrl}?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/about`,
+          'en': `${baseUrl}/about?lang=en`,
+          'es': `${baseUrl}/about?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/experience`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/experience`,
+          'en': `${baseUrl}/experience?lang=en`,
+          'es': `${baseUrl}/experience?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/projects`,
+          'en': `${baseUrl}/projects?lang=en`,
+          'es': `${baseUrl}/projects?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/publications`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/publications`,
+          'en': `${baseUrl}/publications?lang=en`,
+          'es': `${baseUrl}/publications?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/services`,
+          'en': `${baseUrl}/services?lang=en`,
+          'es': `${baseUrl}/services?lang=es`,
+        },
+      },
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.6,
+      priority: 0.7,
+      alternates: {
+        languages: {
+          'pt-MZ': `${baseUrl}/contact`,
+          'en': `${baseUrl}/contact?lang=en`,
+          'es': `${baseUrl}/contact?lang=es`,
+        },
+      },
     },
   ];
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { Volume2, VolumeX } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Volume2, VolumeX } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -185,7 +185,7 @@ export default function AudioPlayer() {
           let audioCreated = false
 
           try {
-            const audio = new Audio('/ambient-sound.mp3')
+            const audio = new Audio('/angelsbymyside.mp3')
             audio.loop = true
             audio.preload = 'auto'
 

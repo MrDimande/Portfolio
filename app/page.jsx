@@ -1,13 +1,17 @@
 'use client'
 
 import AnimatedText from '@/components/AnimatedText'
+import CreativeProcess from '@/components/CreativeProcess'
+import JourneyMap from '@/components/JourneyMap'
+import KnowledgeTree from '@/components/KnowledgeTree'
 import ParallaxSection from '@/components/ParallaxSection'
 import ProjectCard from '@/components/ProjectCard'
 import RevealOnScroll from '@/components/RevealOnScroll'
+import StatusClock from '@/components/StatusClock'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { experiences, projects, skills } from '@/lib/data'
+import { skills } from '@/lib/data'
 import { motion } from 'framer-motion'
-import { ArrowRight, Award, Briefcase, Code, Layers, MapPin, Sparkles, Users, Zap } from 'lucide-react'
+import { ArrowRight, Award, Briefcase, Code, Download, Eye, FileText, Globe, Handshake, Layers, MapPin, Users, Zap } from 'lucide-react'
 import nextDynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -19,7 +23,14 @@ const ThreeScene = nextDynamic(() => import('@/components/ThreeScene'), {
 
 export default function Home() {
   const { t } = useLanguage()
-  const featuredProjects = projects.slice(0, 3)
+  const projectsData = t('projects.items')
+  const featuredProjects = Array.isArray(projectsData) ? projectsData.slice(0, 3) : []
+
+  const publicationsData = t('publications.items')
+  const featuredPublications = Array.isArray(publicationsData) ? publicationsData.slice(0, 3) : []
+
+  const experiencesData = t('experiences')
+  const featuredExperiences = Array.isArray(experiencesData) ? experiencesData.slice(0, 4) : []
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -88,6 +99,13 @@ export default function Home() {
       <div className="relative min-h-screen flex items-center justify-center z-10 pb-24">
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="text-center">
+            {/* Status Clock */}
+            <div className="flex justify-center mb-8">
+              <RevealOnScroll direction="down" delay={0.2}>
+                <StatusClock />
+              </RevealOnScroll>
+            </div>
+
             {/* Main heading */}
             <RevealOnScroll direction="fade">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold mb-6">
@@ -220,6 +238,130 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Knowledge Tree Section */}
+      <section className="relative py-12 sm:py-20 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <KnowledgeTree />
+        </div>
+      </section>
+
+      {/* Journey Map Section */}
+      <section className="relative py-12 sm:py-20 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <JourneyMap />
+        </div>
+      </section>
+
+      {/* Creative Process Section */}
+      <section className="relative py-12 sm:py-20 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <CreativeProcess />
+        </div>
+      </section>
+
+      {/* Publications Section */}
+      <section className="relative py-20 sm:py-32 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll direction="fade">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-orbitron font-bold mb-4">
+                <span className="text-neon-cyan">{t('publications.title')}</span>{' '}
+                <span className="text-neon-magenta">&</span>{' '}
+                <span className="text-neon-blue">{t('publications.subtitle')}</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-neon-cyan to-neon-magenta mx-auto mb-4" />
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                {t('publications.description')}
+              </p>
+            </div>
+          </RevealOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {featuredPublications.map((publication, index) => (
+              <RevealOnScroll key={index} direction="up" delay={index * 0.1}>
+                <Link href={`/publications/${publication.slug}`}>
+                  <motion.div
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    className="glass-strong rounded-xl p-6 border border-white/10 hover:border-neon-cyan transition-all h-full flex flex-col cursor-pointer"
+                  >
+                    {/* Header */}
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className={`w-12 h-12 rounded-full glass border ${
+                        publication.color === 'neon-cyan' ? 'border-neon-cyan' :
+                        publication.color === 'neon-magenta' ? 'border-neon-magenta' : 'border-neon-blue'
+                      } flex items-center justify-center flex-shrink-0`}>
+                        <FileText className={`w-6 h-6 ${
+                          publication.color === 'neon-cyan' ? 'text-neon-cyan' :
+                          publication.color === 'neon-magenta' ? 'text-neon-magenta' : 'text-neon-blue'
+                        }`} />
+                      </div>
+                      <div className="flex-1">
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          publication.color === 'neon-cyan' ? 'bg-neon-cyan/10 text-neon-cyan' :
+                          publication.color === 'neon-magenta' ? 'bg-neon-magenta/10 text-neon-magenta' : 'bg-neon-blue/10 text-neon-blue'
+                        }`}>
+                          {publication.type}
+                        </span>
+                        <p className="text-xs text-gray-500 mt-1">{publication.year}</p>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+                      {publication.title}
+                    </h3>
+                    
+                    {publication.subtitle && (
+                      <p className="text-sm text-neon-magenta mb-2">{publication.subtitle}</p>
+                    )}
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-400 mb-4 line-clamp-3 flex-grow">
+                      {publication.description}
+                    </p>
+
+                    {/* Topics */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {publication.topics.slice(0, 3).map((topic, idx) => (
+                        <span key={idx} className="text-xs px-2 py-1 rounded-full glass border border-white/10 text-gray-400">
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
+                      <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg glass border border-neon-cyan text-neon-cyan text-sm font-medium">
+                        <Eye className="w-4 h-4" />
+                        Ler Artigo
+                      </div>
+                      {publication.pdfUrl && (
+                        <div className="flex items-center justify-center px-3 py-2 rounded-lg glass border border-neon-magenta text-neon-magenta text-sm">
+                          <Download className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </Link>
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          <RevealOnScroll direction="fade" className="text-center">
+            <Link href="/publications">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 glass-strong border-neon-magenta rounded-lg text-neon-magenta font-semibold hover:glow-magenta transition-all inline-flex items-center gap-2"
+              >
+                Ver Todas as Publicações
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </Link>
+          </RevealOnScroll>
+        </div>
+      </section>
+
       {/* Skills Overview Section */}
       <section className="relative py-20 sm:py-32 z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -239,7 +381,7 @@ export default function Home() {
               { title: t('about.gisMapping'), skills: skills.gis, icon: Layers, borderClass: 'border-neon-cyan', textClass: 'text-neon-cyan' },
               { title: t('about.webDevelopment'), skills: skills.web, icon: Code, borderClass: 'border-neon-magenta', textClass: 'text-neon-magenta' },
               { title: t('about.urbanPlanning'), skills: skills.planning, icon: MapPin, borderClass: 'border-neon-blue', textClass: 'text-neon-blue' },
-              { title: t('about.languages'), skills: skills.languages, icon: Sparkles, borderClass: 'border-neon-cyan', textClass: 'text-neon-cyan' },
+              { title: t('about.languages'), skills: skills.languages, icon: Globe, borderClass: 'border-neon-cyan', textClass: 'text-neon-cyan' },
             ].map((category, index) => {
               const Icon = category.icon
               return (
@@ -345,7 +487,7 @@ export default function Home() {
             <RevealOnScroll direction="left">
               <div className="glass-strong rounded-2xl p-8 border border-white/10">
                 <div className="grid grid-cols-2 gap-6">
-                  {experiences.slice(0, 4).map((exp, index) => (
+                  {featuredExperiences.map((exp, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -380,7 +522,7 @@ export default function Home() {
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 className="inline-block mb-6"
               >
-                <Sparkles className="w-16 h-16 text-neon-cyan" />
+                <Handshake className="w-16 h-16 text-neon-cyan" />
               </motion.div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-orbitron font-bold mb-6">
                 <span className="text-neon-cyan">{t('home.ctaTitle')}</span>{' '}
