@@ -1,5 +1,7 @@
 'use client'
 
+// Force rebuild - v1.0.1
+
 import PublicationCard from '@/components/PublicationCard'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { publications } from '@/lib/data'
