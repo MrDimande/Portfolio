@@ -70,8 +70,28 @@ export function LanguageProvider({ children }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext)
+  
+  // Return a fallback if context is not available (e.g., during SSR of error pages)
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
+    return {
+      language: 'pt-MZ',
+      changeLanguage: () => {},
+      t: (key) => {
+        const keys = key.split('.')
+        let value = translations['pt-MZ']
+        for (const k of keys) {
+          if (value === undefined) break
+          value = value[k]
+        }
+        return value || key
+      },
+      isLoading: false,
+      availableLanguages: [
+        { code: 'pt-MZ', label: 'PT', name: 'Português (MZ)', flag: '🇲🇿' },
+        { code: 'en-GB', label: 'EN', name: 'English (UK)', flag: '🇬🇧' },
+      ]
+    }
   }
+  
   return context
 }
