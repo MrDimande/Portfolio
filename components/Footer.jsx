@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Linkedin, Mail, MapPin, Github, MessageCircle, Instagram } from 'lucide-react'
-import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { motion } from 'framer-motion'
+import { Github, Instagram, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -148,6 +148,15 @@ export default function Footer() {
             <span className="text-neon-cyan">{t('footer.innovation')}</span> {t('footer.and')}{' '}
             <span className="text-neon-magenta">{t('footer.vision')}</span>
           </p>
+          <div className="mt-4 flex justify-center gap-4">
+            <Link href="/privacy" className="hover:text-neon-cyan transition-colors">
+              Privacidade
+            </Link>
+            <span>•</span>
+            <Link href="/terms" className="hover:text-neon-magenta transition-colors">
+              Termos
+            </Link>
+          </div>
         </motion.div>
       </div>
     </footer>
