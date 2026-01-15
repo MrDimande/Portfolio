@@ -86,8 +86,9 @@ export default function AboutPage() {
                 {!imageError ? (
                   <Image
                     src="/profile.JPG"
-                    alt="Alberto Dimande"
+                    alt="Alberto Dimande - Planificador Territorial Futurista especialista em GIS e desenvolvimento web em Maputo, Moçambique"
                     fill
+                    sizes="(max-width: 768px) 128px, 128px"
                     className="object-cover"
                     onError={() => setImageError(true)}
                     priority

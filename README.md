@@ -1,6 +1,6 @@
 # 🚀 Portfolio de Alberto Dimande
 
-Portfolio web futurista e moderno para **Alberto Dimande**, Planificador Territorial de Maputo, Moçambique. Uma experiência imersiva que combina design cyberpunk, animações 3D, interatividade avançada e funcionalidades inovadoras.
+Portfolio web profissional moderno para **Alberto Dimande**, Planificador Territorial de Maputo, Moçambique. Uma experiência imersiva que combina design cyberpunk, animações 3D, interatividade avançada e funcionalidades inovadoras.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-00ffff?style=for-the-badge&logo=vercel&logoColor=black)](https://dimande.vercel.app/)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
@@ -62,7 +62,7 @@ Portfolio web futurista e moderno para **Alberto Dimande**, Planificador Territo
 
 ### Deployment
 
-- **Plataforma**: [Vercel](https://vercel.com/) (otimizado)
+- **Plataforma**: [Vercel](https://vercel.com/) (optimizado)
 - **CI/CD**: Integração automática com GitHub
 - **Domínio**: [dimande.vercel.app](https://dimande.vercel.app/)
 
@@ -132,7 +132,7 @@ http://localhost:3000
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Projecto
 
 ```
 portifolio/
@@ -143,10 +143,10 @@ portifolio/
 │   ├── not-found.jsx           # Página 404
 │   ├── about/                  # Rota Sobre Mim
 │   ├── experience/             # Rota Experiência
-│   ├── projects/               # Rota Projetos
+│   ├── projects/               # Rota Projectos
 │   ├── publications/           # Rota Publicações
 │   ├── services/               # Rota Serviços
-│   └── contact/                # Rota Contato
+│   └── contact/                # Rota Contacto
 │
 ├── components/                   # Componentes React
 │   ├── ... (Componentes UI, Animações, Widgets)

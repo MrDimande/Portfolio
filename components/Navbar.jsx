@@ -61,7 +61,7 @@ export default function Navbar() {
               <FestiveLogoEffect>
                 <Image
                   src="/ALD Logo.svg"
-                  alt="ALD Logo"
+                  alt="Alberto Dimande Logo - Portfolio de Planificador Territorial"
                   width={48}
                   height={48}
                   className="h-10 sm:h-12 w-auto"

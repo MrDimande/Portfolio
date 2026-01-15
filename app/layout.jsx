@@ -1,3 +1,4 @@
+import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -125,7 +126,6 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="apple-touch-icon" href="/ALD Logo.svg" />
-        <link rel="canonical" href={siteUrl} />
         <meta name="geo.region" content="MZ-MPM" />
         <meta name="geo.placename" content="Maputo" />
         <meta name="geo.position" content="-25.969248;32.573229" />
@@ -174,6 +174,7 @@ export default function RootLayout({ children }) {
             <CustomCursor />
             <Navbar />
             <Breadcrumbs />
+            <BreadcrumbStructuredData />
             <main className="relative z-10">{children}</main>
             <Footer />
             <ChatBot />

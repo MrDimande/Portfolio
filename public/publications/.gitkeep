@@ -1,0 +1,10 @@
+# Esta pasta contém as imagens de capa das publicações
+# 
+# Estrutura esperada:
+# /public/publications/{slug}-cover.jpg
+#
+# Exemplos:
+# - monografia-diagnostico-recursos-zimpeto-cover.jpg
+# - planeamento-territorial-inteligencia-artificial-cover.jpg
+#
+# Para mais informações, consulte: /public/publications/README.md

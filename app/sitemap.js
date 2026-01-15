@@ -1,8 +1,10 @@
+import { publications } from '@/lib/data';
+
 export default function sitemap() {
   const baseUrl = "https://dimande.vercel.app";
   const now = new Date();
 
-  const routes = [
+  const staticRoutes = [
     {
       url: baseUrl,
       lastModified: now,
@@ -96,5 +98,20 @@ export default function sitemap() {
     },
   ];
 
-  return routes;
+  // Adicionar URLs dinâmicas de publicações individuais
+  const publicationRoutes = publications.map((publication) => ({
+    url: `${baseUrl}/publications/${publication.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    alternates: {
+      languages: {
+        'pt-MZ': `${baseUrl}/publications/${publication.slug}`,
+        'en': `${baseUrl}/publications/${publication.slug}?lang=en`,
+        'es': `${baseUrl}/publications/${publication.slug}?lang=es`,
+      },
+    },
+  }));
+
+  return [...staticRoutes, ...publicationRoutes];
 }

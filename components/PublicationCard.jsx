@@ -2,10 +2,14 @@
 
 import { getSoundEffects } from '@/lib/soundEffects'
 import { motion } from 'framer-motion'
-import { Calendar, Download, ExternalLink, Eye, FileText, Tag, Users } from 'lucide-react'
+import { Calendar, Download, ExternalLink, Eye, FileText, Star, Tag, Users } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function PublicationCard({ publication, index }) {
+  const [imageError, setImageError] = useState(false)
+  
   const handleClick = () => {
     getSoundEffects()?.playClick()
   }
@@ -60,15 +64,80 @@ export default function PublicationCard({ publication, index }) {
       }`} />
 
       <div className="relative z-10">
-        {/* Type Badge */}
-        <div className="flex items-center justify-between mb-4">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium glass border ${colors.border} ${colors.text}`}>
-            {publication.type}
-          </span>
-          <div className={`w-12 h-12 rounded-full glass ${colors.border} border flex items-center justify-center group-hover:glow-cyan transition-all`}>
-            <FileText className={`w-6 h-6 ${colors.text}`} />
+        {/* Cover Image */}
+        {publication.coverImage && !imageError && (
+          <Link href={`/publications/${publication.slug}`} onClick={handleClick}>
+            <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity border border-white/10">
+              <Image
+                src={publication.coverImage}
+                alt={`Capa: ${publication.title}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+                onError={() => setImageError(true)}
+                priority={index < 3}
+              />
+              {/* Overlay gradient for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              
+              {/* Featured Badge */}
+              {publication.featured && (
+                <div className="absolute top-3 right-3 z-10">
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    className="px-2 py-1 rounded-full bg-yellow-500/90 backdrop-blur-sm text-yellow-900 text-xs font-bold flex items-center gap-1 shadow-lg"
+                  >
+                    <Star className="w-3 h-3 fill-yellow-900" />
+                    Destaque
+                  </motion.div>
+                </div>
+              )}
+              
+              {/* Type Badge on Image */}
+              <div className="absolute bottom-3 left-3 z-10">
+                <span className={`px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-black/60 border ${colors.border} ${colors.text}`}>
+                  {publication.type}
+                </span>
+              </div>
+            </div>
+          </Link>
+        )}
+
+        {/* Fallback when no cover image */}
+        {(!publication.coverImage || imageError) && (
+          <div className="relative h-32 w-full mb-4 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-neon-cyan/10 via-neon-magenta/10 to-neon-blue/10 flex items-center justify-center">
+            <div className={`w-16 h-16 rounded-full glass ${colors.border} border flex items-center justify-center ${!imageError && 'group-hover:glow-cyan transition-all'}`}>
+              <FileText className={`w-8 h-8 ${colors.text}`} />
+            </div>
+            {publication.featured && (
+              <div className="absolute top-3 right-3 z-10">
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  className="px-2 py-1 rounded-full bg-yellow-500/90 backdrop-blur-sm text-yellow-900 text-xs font-bold flex items-center gap-1 shadow-lg"
+                >
+                  <Star className="w-3 h-3 fill-yellow-900" />
+                  Destaque
+                </motion.div>
+              </div>
+            )}
           </div>
-        </div>
+        )}
+
+        {/* Type Badge - Only show if no cover image */}
+        {(!publication.coverImage || imageError) && (
+          <div className="flex items-center justify-between mb-4">
+            <span className={`px-3 py-1 rounded-full text-xs font-medium glass border ${colors.border} ${colors.text}`}>
+              {publication.type}
+            </span>
+            {!publication.featured && (
+              <div className={`w-12 h-12 rounded-full glass ${colors.border} border flex items-center justify-center group-hover:glow-cyan transition-all`}>
+                <FileText className={`w-6 h-6 ${colors.text}`} />
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Title */}
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors line-clamp-2">
