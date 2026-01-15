@@ -90,10 +90,10 @@ export const metadata = {
       "Portfolio de Alberto Dimande - Especialista em Planeamento Territorial, GIS e Desenvolvimento Web em Maputo, Moçambique.",
     images: [
       {
-        url: "/profile.JPG",
-        width: 800,
-        height: 800,
-        alt: "Alberto Dimande",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Alberto Dimande - Territorial Planner | GIS Specialist | Web Developer",
       },
     ],
   },
@@ -102,7 +102,7 @@ export const metadata = {
     title: "Alberto Dimande | Planificador Territorial Futurista",
     description:
       "Portfolio de Alberto Dimande - Especialista em Planeamento Territorial, GIS e Desenvolvimento Web.",
-    images: ["/profile.JPG"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
