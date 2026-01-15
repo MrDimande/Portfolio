@@ -1,5 +1,6 @@
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import CookieConsent from "@/components/CookieConsent";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ParticlesBackground from "@/components/ParticlesBackground";
@@ -181,6 +182,7 @@ export default function RootLayout({ children }) {
             <ChatBot />
             <AudioPlayer />
             <ScrollToTop />
+            <CookieConsent />
           </div>
         </Providers>
         <Analytics />
