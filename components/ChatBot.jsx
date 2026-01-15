@@ -13,6 +13,25 @@ export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef(null)
 
+  // Check if Alberto is likely online (Maputo time: 8h-18h weekdays)
+  const isAlbertoOnline = () => {
+    const now = new Date()
+    const maputoTime = new Date(now.toLocaleString('en-US', { timeZone: 'Africa/Maputo' }))
+    const hours = maputoTime.getHours()
+    const day = maputoTime.getDay()
+    const isWeekday = day >= 1 && day <= 5
+    const isWorkHours = hours >= 8 && hours < 18
+    return isWeekday && isWorkHours
+  }
+
+  const [albertoOnline, setAlbertoOnline] = useState(false)
+
+  useEffect(() => {
+    setAlbertoOnline(isAlbertoOnline())
+    const interval = setInterval(() => setAlbertoOnline(isAlbertoOnline()), 60000)
+    return () => clearInterval(interval)
+  }, [])
+
   const quickReplies = [
     { text: 'Serviços', icon: '🛠️' },
     { text: 'Projetos', icon: '📁' },
@@ -31,10 +50,14 @@ export default function ChatBot() {
   useEffect(() => {
     // Welcome message
     if (isOpen && messages.length === 0) {
+      const welcomeText = albertoOnline
+        ? 'Olá! ✨ Sou a Nyx, a assistente IA do Alberto! O Alberto está online agora, então se quiseres falar directamente com ele, é só dizer! Mas posso ajudar-te com qualquer pergunta sobre serviços, projectos ou experiência. O que precisas? 🚀'
+        : 'Olá! ✨ Sou a Nyx, a assistente IA do Alberto Dimande! O Alberto não está disponível agora, mas eu conheço tudo sobre o trabalho dele. Pergunta-me sobre serviços, projectos, publicações, ou qualquer outra coisa! 💫'
+      
       setMessages([
         {
           id: 1,
-          text: 'Olá! 👋 Sou o assistente IA do Alberto Dimande, potenciado pelo Google Gemini. Posso responder perguntas sobre os serviços, projectos, experiência ou qualquer outra coisa! Como posso ajudar-te hoje?',
+          text: welcomeText,
           sender: 'bot',
           timestamp: new Date(),
         },
@@ -191,12 +214,16 @@ export default function ChatBot() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white font-orbitron">AI Assistente</h3>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <p className="text-xs text-green-400">Online</p>
-                  </div>
+                  <h3 className="text-sm font-bold text-white font-orbitron">Nyx</h3>
+                  <p className="text-xs text-gray-400">Assistente IA do Alberto</p>
                 </div>
+              </div>
+              {/* Alberto Status */}
+              <div className="flex items-center gap-2 mr-4">
+                <div className={`w-2 h-2 rounded-full ${albertoOnline ? 'bg-green-400 animate-pulse' : 'bg-gray-500'}`} />
+                <p className={`text-xs ${albertoOnline ? 'text-green-400' : 'text-gray-500'}`}>
+                  {albertoOnline ? 'Online' : 'Offline'}
+                </p>
               </div>
               <motion.button
                 onClick={() => setIsOpen(false)}
