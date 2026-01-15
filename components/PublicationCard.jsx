@@ -67,13 +67,13 @@ export default function PublicationCard({ publication, index }) {
         {/* Cover Image */}
         {publication.coverImage && !imageError && (
           <Link href={`/publications/${publication.slug}`} onClick={handleClick}>
-            <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity border border-white/10">
+            <div className="relative h-72 w-full mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity border border-white/10 bg-black/30">
               <Image
                 src={publication.coverImage}
                 alt={`Capa: ${publication.title}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
+                className="object-contain"
                 onError={() => setImageError(true)}
                 priority={index < 3}
               />
