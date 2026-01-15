@@ -146,6 +146,19 @@ body::before {
   color: #ffffff;
 }
 
+/* Text Justification for better readability */
+.text-justify {
+  text-align: justify;
+}
+
+/* Apply justify to description paragraphs */
+.leading-relaxed {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 /* Smooth transitions */
 * {
   transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
