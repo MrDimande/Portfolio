@@ -34,7 +34,7 @@ export default function ChatBot() {
       setMessages([
         {
           id: 1,
-          text: 'Olá! 👋 Sou o assistente virtual do Alberto. Como posso ajudar-te hoje?',
+          text: 'Olá! 👋 Sou o assistente IA do Alberto Dimande, potenciado pelo Google Gemini. Posso responder perguntas sobre os serviços, projectos, experiência ou qualquer outra coisa! Como posso ajudar-te hoje?',
           sender: 'bot',
           timestamp: new Date(),
         },
@@ -55,7 +55,7 @@ export default function ChatBot() {
     'obrigado': '😊 De nada! Se tiveres mais alguma pergunta, estou aqui para ajudar.',
   }
 
-  const handleSendMessage = (text = inputValue) => {
+  const handleSendMessage = async (text = inputValue) => {
     if (!text.trim()) return
 
     const userMessage = {
@@ -69,12 +69,50 @@ export default function ChatBot() {
     setInputValue('')
     setIsTyping(true)
 
-    // Simulate bot response with typing delay
-    setTimeout(() => {
-      const lowerInput = text.toLowerCase()
-      let botResponse = '🤔 Não tenho certeza sobre isso, mas podes encontrar mais informações nas páginas do portfolio ou contactar o Alberto diretamente!'
+    try {
+      // Try to get AI response from Gemini
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          message: text,
+          history: messages.slice(-6) // Send last 6 messages for context
+        }),
+      })
 
-      // Check for keywords
+      const data = await response.json()
+      
+      let botResponse
+      if (data.fallback || data.error) {
+        // Fallback to FAQ responses
+        const lowerInput = text.toLowerCase()
+        botResponse = '🤔 Não tenho certeza sobre isso, mas podes encontrar mais informações nas páginas do portfolio ou contactar o Alberto diretamente!'
+        
+        for (const [keyword, response] of Object.entries(faqResponses)) {
+          if (lowerInput.includes(keyword)) {
+            botResponse = response
+            break
+          }
+        }
+      } else {
+        botResponse = data.response
+      }
+
+      const botMessage = {
+        id: messages.length + 2,
+        text: botResponse,
+        sender: 'bot',
+        timestamp: new Date(),
+      }
+
+      setIsTyping(false)
+      setMessages((prev) => [...prev, botMessage])
+    } catch (error) {
+      console.error('Chat error:', error)
+      // Fallback to FAQ on error
+      const lowerInput = text.toLowerCase()
+      let botResponse = '🤔 Desculpa, houve um problema. Podes tentar novamente ou contactar o Alberto diretamente!'
+      
       for (const [keyword, response] of Object.entries(faqResponses)) {
         if (lowerInput.includes(keyword)) {
           botResponse = response
@@ -91,7 +129,7 @@ export default function ChatBot() {
 
       setIsTyping(false)
       setMessages((prev) => [...prev, botMessage])
-    }, 1200)
+    }
   }
 
   const handleKeyPress = (e) => {
