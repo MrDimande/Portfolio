@@ -74,6 +74,7 @@ export const metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    bing: process.env.NEXT_PUBLIC_BING_VERIFICATION,
   },
   authors: [{ name: "Alberto Dimande", url: siteUrl }],
   creator: "Alberto Dimande",
